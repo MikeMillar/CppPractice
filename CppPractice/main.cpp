@@ -5,8 +5,10 @@ class Animal {
 	string name;
 
 public:
+	Animal() { cout << "Animal Created." << endl; };
+	Animal(const Animal& other) { name = other.name; cout << "Animal created by copying." << endl; }; // Custom copy constructor. c++ has is own copy constructor it uses by default.
 	void setName(string name) { this->name = name; };
-	void speak() const { cout << "My name i: " << name << endl; };
+	void speak() const { cout << "My name is: " << name << endl; };
 };
 
 int main() {
@@ -15,8 +17,12 @@ int main() {
 	cout << PI << endl;
 
 	Animal animal;
+	Animal animal2 = animal;
+	animal2.speak();
 	animal.setName("Freddy");
+	animal2.setName("Mike");
 	animal.speak();
+	animal2.speak();
 
 	int value = 8;
 	//const int* const pValue = &value; // const int* const pValue = &value; --- Compiler reads as a const int, and a const pointer. Can't change either.
